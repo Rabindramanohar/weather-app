@@ -1,23 +1,19 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import AllCities from './components/AllCities';
+import SelectedCity from './components/SelectedCity';
 
 function App() {
+  const[toggleComponent, setToggleComponent] = useState(false);
+  function handleButton() {
+    setToggleComponent({toggleComponent : !toggleComponent})
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Weather Application</h1>
+      <input type = "text" placeholder = "Enter you City" />
+      <button onClick = {handleButton}>Search</button>
+      {toggleComponent ? <SelectedCity /> : <AllCities />}
     </div>
   );
 }
