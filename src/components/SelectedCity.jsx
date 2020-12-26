@@ -1,4 +1,3 @@
-import { Container } from '@material-ui/core';
 import React from 'react';
 import { useState } from 'react';
 import keys from './../key';
@@ -55,7 +54,9 @@ function SelectedCity() {
                         </div>
                         <div className = "weather-container">
                             <div className = "temperature">
-                                {Math.round(weather.main.temp)}<span>&#176;</span>C
+                                <div>current temp: {weather.main.temp}<span>&#176;</span>C</div>
+                                <div>max temp: {weather.main.temp_max}<span>&#176;</span>C</div>
+                                <div>min temp: {weather.main.temp_min}<span>&#176;</span>C</div>
                             </div>
                             <div className = "weather">
                                 {weather.weather[0].main}
