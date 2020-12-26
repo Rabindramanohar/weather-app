@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import keys from './../key';
 
@@ -6,7 +6,7 @@ const api = {
     key: keys.API_KEY,
     base: keys.BASE_URL,
 };
-function SelectedCity() {
+function SelectedCity(props) {
 
     const currDate = () => {
         let date = new window.Date().toString();
@@ -14,34 +14,27 @@ function SelectedCity() {
         return date;
     };
 
-    const [query, setQuery] = useState("");
+    const [query, setQuery] = useState(props.cityName);
     const [weather, setWeather] = useState({});
 
-    const handleSearch = event => {
-        if(event.key === "Enter") {
-            fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+
+    useEffect(() => {
+        fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
             .then(res => res.json())
             .then(result => {
                 setQuery("");
                 setWeather(result);
                 console.log(result);
-            })
-        }
-    }
+                console.log(props.cityName);
+            });
+    }, []);
 
     return (
         <div>
             <h1>Selected City</h1>
-            <main>
+            <main style = {{textAlign: 'center'}}>
                 <div className = "search-container">
-                    <input 
-                        type = "text"
-                        placeholder = "Enter you city.."
-                        className = "search-bar"
-                        onChange = {event => setQuery(event.target.value)}
-                        value = {query}
-                        onKeyPress = {handleSearch}
-                    />
+                    
                 </div>
 
                 {typeof weather.main != "undefined" ? (
