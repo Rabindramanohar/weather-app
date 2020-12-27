@@ -1,6 +1,8 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Live Demo: [weather-app](https://hzh9w.csb.app/).
+
+## Description: React weather application build with react, material ui.
 
 ## Available Scripts
 
