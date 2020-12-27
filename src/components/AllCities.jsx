@@ -11,26 +11,26 @@ import TableRow from '@material-ui/core/TableRow';
 
 const columns = [
     { id: 'city', label: 'Cities', minWidth: 170 },
-    { id: 'temp', label: 'Temperature', minWidth: 100 },
-    { id: 'minTemp', label: 'Min Temp', minWidth: 100 },
-    { id: 'maxTemp', label: 'Max Temp', minWidth: 100 },
+    { id: 'temp', label: 'Temperature °C', minWidth: 100 },
+    { id: 'minTemp', label: 'Min Temp °C', minWidth: 100 },
+    { id: 'maxTemp', label: 'Max Temp °C', minWidth: 100 },
     {
         id: 'pressure',
-        label: 'Pressure',
+        label: 'Pressure (hPa)',
         minWidth: 150,
         align: 'right',
         format: (value) => value.toLocaleString('en-US'),
     },
     {
         id: 'humidity',
-        label: 'Humidity',
+        label: 'Humidity (%)',
         minWidth: 170,
         align: 'right',
         format: (value) => value.toLocaleString('en-US'),
     },
     {
         id: 'wind',
-        label: 'Wind Pressure',
+        label: 'Wind Pressure (km/hr)',
         minWidth: 170,
         align: 'right',
         format: (value) => value.toFixed(2),
@@ -114,7 +114,7 @@ export default function AllCities() {
                                     <TableCell
                                         key={column.id}
                                         align={column.align}
-                                        style={{ minWidth: column.minWidth }}
+                                        style={{ minWidth: column.minWidth, fontWeight: 'bold', fontSize: 'large' }}
                                     >
                                         {column.label}
                                     </TableCell>
@@ -127,7 +127,7 @@ export default function AllCities() {
                                     <TableRow hover role="checkbox" tabIndex={-1} key={row.city}>
                                         {columns.map((column) => {
                                             const value = row[column.id];
-                                            // console.log(column);
+                                            console.log(column.id);
                                             return (
                                                 <TableCell key={column.id} align={column.align}>
                                                     {value}
